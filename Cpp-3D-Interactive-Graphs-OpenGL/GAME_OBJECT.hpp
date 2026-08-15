@@ -181,6 +181,9 @@ public:
 		case UVsphere:
 			MESH_LOADER::LoadUVSphereVertices(vertices, indices);
 			break;
+		case Voxels:
+			MESH_LOADER::LoadVoxelsVertices(vertices, indices);
+			break;
 		}
 	}
 	void SetVertex(std::string filePath="") {

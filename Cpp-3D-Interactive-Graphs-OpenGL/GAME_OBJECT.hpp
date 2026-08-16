@@ -166,7 +166,7 @@ public:
 	void SetProgram(GLuint program) {
 		this->program = program;
 	}
-	void SetVertex(MESH_TYPE meshType) {
+	void SetVertex(MESH_TYPE meshType, vec4 color = { 0.0f, 0.0f, 0.0f, 1.0f }) {
 		// ******* Load Vertex data **********
 		switch (meshType) {
 		case Triangle:
@@ -182,7 +182,7 @@ public:
 			MESH_LOADER::LoadUVSphereVertices(vertices, indices);
 			break;
 		case Voxels:
-			MESH_LOADER::LoadVoxelsVertices(vertices, indices);
+			MESH_LOADER::LoadVoxelsVertices(vertices, indices, color);
 			break;
 		}
 	}

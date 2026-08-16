@@ -29,6 +29,7 @@ TEXT_RENDER* label;
 
 int Xs, Ys, Zs;
 float dist, size; // dist: distance between voxels.
+vec4 col; // Color of voxels.
 GAME_OBJECT* voxels[100][100][200];
 
 GAME_OBJECT* blueBox;
@@ -119,9 +120,10 @@ void InitGame() {
 	
 	// ******** Set Values Voxes *********
 
-	size = 0.01f;
+	size = 0.05f;
 	dist = 0.1f;
-	Xs = 70, Ys = 70, Zs = 100;
+	Xs = 10, Ys = 10, Zs = 70;
+	col = { 1.0f, 0.0f, 1.0f, 0.0f }; // Color of voxels
 
 	// ******** Set camera *********
 	camera = new CAMERA(45.0f, 800, 600, 0.1f, 100.0f, vec3((float)(Xs)*dist / 2.0f, (float)(Zs)*dist / 2.0f, 30.0f)); // 800x600: size of window
@@ -230,7 +232,7 @@ void AddGameObjects() {
 		for (int y = 0; y < Ys; y++) {
 			for (int z = 0; z < Zs; z++) {
 				voxels[x][y][z] = new GAME_OBJECT("", vec3((float)(x)*dist, (float)(z)*dist, (float)(y)*dist), vec3(size, size, size));
-				voxels[x][y][z]->SetVertex(MESH_TYPE::Voxels);
+				voxels[x][y][z]->SetVertex(MESH_TYPE::Voxels, col);
 				voxels[x][y][z]->SetDefaultColor(flatShaderProgram);
 				//voxels[x][y][z]->SetColor(flatShaderProgram, vec4(0.0f, 0.0f, 1.0f, 1.0f));
 			}

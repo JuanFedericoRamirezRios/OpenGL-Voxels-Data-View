@@ -212,41 +212,46 @@ public:
 		vertices = _vertices;
 		indices = _indices;
 	}
-	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, vec4 color) {
+	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, vec4 color, float size) {
 
 		vec2 coorT = vec2(0.0, 0.0);
+
+		vec3 norm = {0.0f, 0.0f, 0.0f};
+
+		float s = size / 2;
 		
 		std::vector<VERTEX> _vertices = {
+
 			//front
-			{ { -1.0f, -1.0f, 1.0f },{ 0.0f, 0.0f, 1.0 }, color, coorT }, //0
-			{ { -1.0f, 1.0f, 1.0f },{ 0.0f, 0.0f, 1.0 }, color, coorT }, //1
-			{ { 1.0f, 1.0f, 1.0f },{ 0.0f, 0.0f, 1.0 }, color, coorT }, //2
-			{ { 1.0f, -1.0f, 1.0f },{ 0.0f, 0.0f, 1.0 }, color, coorT }, //3
+			{ { -s, -s, s }, norm, color, coorT }, //0
+			{ { -s, s, s }, norm, color, coorT }, //1
+			{ { s, s, s }, norm, color, coorT }, //2
+			{ { s, -s, s }, norm, color, coorT }, //3
 			// back 
-			{ { 1.0, -1.0, -1.0 },{ 0.0f, 0.0f, -1.0 }, color, coorT }, //4
-			{ { 1.0f, 1.0, -1.0 },{ 0.0f, 0.0f, -1.0 }, color, coorT }, //5
-			{ { -1.0, 1.0, -1.0 },{ 0.0f, 0.0f, -1.0 }, color, coorT }, //6
-			{ { -1.0, -1.0, -1.0 },{ 0.0f, 0.0f, -1.0 }, color, coorT }, //7
+			{ { s, -s, -s }, norm, color, coorT }, //4
+			{ { s, s, -s }, norm, color, coorT }, //5
+			{ { -s, s, -s }, norm, color, coorT }, //6
+			{ { -s, -s, -s }, norm, color, coorT }, //7
 			//left
-			{ { -1.0, -1.0, -1.0 },{ -1.0f, 0.0f, 0.0 }, color, coorT }, //8
-			{ { -1.0f, 1.0, -1.0 },{ -1.0f, 0.0f, 0.0 }, color, coorT }, //9
-			{ { -1.0, 1.0, 1.0 },{ -1.0f, 0.0f, 0.0 }, color, coorT },   //10
-			{ { -1.0, -1.0, 1.0 },{ -1.0f, 0.0f, 0.0 }, color, coorT }, //11
+			{ { -s, -s, -s }, norm, color, coorT }, //8
+			{ { -s, s, -s }, norm, color, coorT }, //9
+			{ { -s, s, s }, norm, color, coorT },   //10
+			{ { -s, -s, s }, norm, color, coorT }, //11
 			//right
-			{ { 1.0, -1.0, 1.0 },{ 1.0f, 0.0f, 0.0 }, color, coorT }, // 12
-			{ { 1.0f, 1.0, 1.0 },{ 1.0f, 0.0f, 0.0 }, color, coorT }, //13
-			{ { 1.0, 1.0, -1.0 },{ 1.0f, 0.0f, 0.0 }, color, coorT }, //14
-			{ { 1.0, -1.0, -1.0 },{ 1.0f, 0.0f, 0.0 }, color, coorT }, //15
+			{ { s, -s, s }, norm, color, coorT }, // 12
+			{ { s, s, s }, norm, color, coorT }, //13
+			{ { s, s, -s }, norm, color, coorT }, //14
+			{ { s, -s, -s }, norm, color, coorT }, //15
 			//top
-			{ { -1.0f, 1.0f, 1.0f },{ 0.0f, 1.0f, 0.0 }, color, coorT }, //16
-			{ { -1.0f, 1.0f, -1.0f },{ 0.0f, 1.0f, 0.0 }, color, coorT }, //17
-			{ { 1.0f, 1.0f, -1.0f },{ 0.0f, 1.0f, 0.0 }, color, coorT }, //18
-			{ { 1.0f, 1.0f, 1.0f },{ 0.0f, 1.0f, 0.0 }, color, coorT }, //19
+			{ { -s, s, s }, norm, color, coorT }, //16
+			{ { -s, s, -s }, norm, color, coorT }, //17
+			{ { s, s, -s }, norm, color, coorT }, //18
+			{ { s, s, s }, norm, color, coorT }, //19
 			//bottom 
-			{ { -1.0f, -1.0, -1.0 },{ 0.0f, -1.0f, 0.0 }, color, coorT }, //20
-			{ { -1.0, -1.0, 1.0 },{ 0.0f, -1.0f, 0.0 }, color, coorT }, //21
-			{ { 1.0, -1.0, 1.0 },{ 0.0f, -1.0f, 0.0 }, color, coorT },  //22
-			{ { 1.0, -1.0, -1.0 },{ 0.0f, -1.0f, 0.0 }, color, coorT }, //23
+			{ { -s, -s, -s }, norm, color, coorT }, //20
+			{ { -s, -s, s }, norm, color, coorT }, //21
+			{ { s, -s, s }, norm, color, coorT },  //22
+			{ { s, -s, -s }, norm, color, coorT }, //23
 		};
 
 		std::vector<uint32_t> _indices = {

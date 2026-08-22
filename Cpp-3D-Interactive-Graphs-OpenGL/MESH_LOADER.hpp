@@ -212,49 +212,145 @@ public:
 		vertices = _vertices;
 		indices = _indices;
 	}
-	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, vec4 color, float size) {
+
+	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, vec4 color, float size, float distance, unsigned Xs, unsigned Ys, unsigned Zs) {
+
+		//for (int x = 0; x < Xs; x++) {
+		//	for (int y = 0; y < Ys; y++) {
+		//		for (int z = 0; z < Zs; z++) {
+		//			voxels[x][y][z] = new GAME_OBJECT("", vec3((float)(x)*dist, (float)(z)*dist, (float)(y)*dist)/*, vec3(size, size, size)*/);
+		//			voxels[x][y][z]->SetVertex(MESH_TYPE::Voxels, col, size);
+		//			voxels[x][y][z]->SetDefaultColor(flatShaderProgram);
+		//			//voxels[x][y][z]->SetColor(flatShaderProgram, vec4(0.0f, 0.0f, 1.0f, 1.0f));
+		//		}
+		//	}
+		//}
 
 		vec2 coorT = vec2(0.0, 0.0);
 
 		vec3 norm = {0.0f, 0.0f, 0.0f};
 
 		float s = size / 2;
+		float d = distance;
+
+		std::vector<VERTEX> _vertices;
 		
-		std::vector<VERTEX> _vertices = {
 
-			//front
-			{ { -s, -s, s }, norm, color, coorT }, //0
-			{ { -s, s, s }, norm, color, coorT }, //1
-			{ { s, s, s }, norm, color, coorT }, //2
-			{ { s, -s, s }, norm, color, coorT }, //3
-			// back 
-			{ { s, -s, -s }, norm, color, coorT }, //4
-			{ { s, s, -s }, norm, color, coorT }, //5
-			{ { -s, s, -s }, norm, color, coorT }, //6
-			{ { -s, -s, -s }, norm, color, coorT }, //7
-			//left
-			{ { -s, -s, -s }, norm, color, coorT }, //8
-			{ { -s, s, -s }, norm, color, coorT }, //9
-			{ { -s, s, s }, norm, color, coorT },   //10
-			{ { -s, -s, s }, norm, color, coorT }, //11
-			//right
-			{ { s, -s, s }, norm, color, coorT }, // 12
-			{ { s, s, s }, norm, color, coorT }, //13
-			{ { s, s, -s }, norm, color, coorT }, //14
-			{ { s, -s, -s }, norm, color, coorT }, //15
-			//top
-			{ { -s, s, s }, norm, color, coorT }, //16
-			{ { -s, s, -s }, norm, color, coorT }, //17
-			{ { s, s, -s }, norm, color, coorT }, //18
-			{ { s, s, s }, norm, color, coorT }, //19
-			//bottom 
-			{ { -s, -s, -s }, norm, color, coorT }, //20
-			{ { -s, -s, s }, norm, color, coorT }, //21
-			{ { s, -s, s }, norm, color, coorT },  //22
-			{ { s, -s, -s }, norm, color, coorT }, //23
-		};
 
-		std::vector<uint32_t> _indices = {
+		for (int x = 0; x < Xs; x++) {
+			for (int y = 0; y < Ys; y++) {
+				for (int z = 0; z < Zs; z++) {
+					std::vector<VERTEX> cube = {
+
+						//front
+						{ { -s + d * x, -s + d * z, s + d * y}, norm, color, coorT }, //0
+						{ { -s + d * x, s + d * z, s + d * y}, norm, color, coorT }, //1
+						{ { s + d * x, s + d * z, s + d * y}, norm, color, coorT }, //2
+						{ { s + d * x, -s + d * z, s + d * y}, norm, color, coorT }, //3
+						// back 
+						{ { s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //4
+						{ { s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //5
+						{ { -s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //6
+						{ { -s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //7
+						//left
+						{ { -s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //8
+						{ { -s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //9
+						{ { -s + d * x, s + d * z, s + d * y}, norm, color, coorT },   //10
+						{ { -s + d * x, -s + d * z, s + d * y}, norm, color, coorT }, //11
+						//right
+						{ { s + d * x, -s + d * z, s + d * y}, norm, color, coorT }, // 12
+						{ { s + d * x, s + d * z, s + d * y}, norm, color, coorT }, //13
+						{ { s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //14
+						{ { s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //15
+						//top
+						{ { -s + d * x, s + d * z, s + d * y}, norm, color, coorT }, //16
+						{ { -s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //17
+						{ { s + d * x, s + d * z, -s + d * y}, norm, color, coorT }, //18
+						{ { s + d * x, s + d * z, s + d * y}, norm, color, coorT }, //19
+						//bottom 
+						{ { -s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //20
+						{ { -s + d * x, -s + d * z, s + d * y}, norm, color, coorT }, //21
+						{ { s + d * x, -s + d * z, s + d * y}, norm, color, coorT },  //22
+						{ { s + d * x, -s + d * z, -s + d * y}, norm, color, coorT }, //23
+					};
+					_vertices.insert(_vertices.end(), cube.begin(), cube.end());
+					cube.clear();
+				}
+			}
+		}
+
+		
+		//std::vector<VERTEX> cube = {
+
+		//	//front
+		//	{ { -s, -s, s }, norm, color, coorT }, //0
+		//	{ { -s, s, s }, norm, color, coorT }, //1
+		//	{ { s, s, s }, norm, color, coorT }, //2
+		//	{ { s, -s, s }, norm, color, coorT }, //3
+		//	// back 
+		//	{ { s, -s, -s }, norm, color, coorT }, //4
+		//	{ { s, s, -s }, norm, color, coorT }, //5
+		//	{ { -s, s, -s }, norm, color, coorT }, //6
+		//	{ { -s, -s, -s }, norm, color, coorT }, //7
+		//	//left
+		//	{ { -s, -s, -s }, norm, color, coorT }, //8
+		//	{ { -s, s, -s }, norm, color, coorT }, //9
+		//	{ { -s, s, s }, norm, color, coorT },   //10
+		//	{ { -s, -s, s }, norm, color, coorT }, //11
+		//	//right
+		//	{ { s, -s, s }, norm, color, coorT }, // 12
+		//	{ { s, s, s }, norm, color, coorT }, //13
+		//	{ { s, s, -s }, norm, color, coorT }, //14
+		//	{ { s, -s, -s }, norm, color, coorT }, //15
+		//	//top
+		//	{ { -s, s, s }, norm, color, coorT }, //16
+		//	{ { -s, s, -s }, norm, color, coorT }, //17
+		//	{ { s, s, -s }, norm, color, coorT }, //18
+		//	{ { s, s, s }, norm, color, coorT }, //19
+		//	//bottom 
+		//	{ { -s, -s, -s }, norm, color, coorT }, //20
+		//	{ { -s, -s, s }, norm, color, coorT }, //21
+		//	{ { s, -s, s }, norm, color, coorT },  //22
+		//	{ { s, -s, -s }, norm, color, coorT }, //23
+		//};
+		//_vertices.insert(_vertices.end(), cube.begin(), cube.end());
+		//cube.clear();
+
+		std::vector<uint32_t> _indices;
+
+		for (int x = 0; x < Xs; x++) {
+			for (int y = 0; y < Ys; y++) {
+				for (int z = 0; z < Zs; z++) {
+					uint32_t inc = (x * Ys * Zs + y * Zs + z)*24;
+					std::vector<uint32_t> indicesCube = {
+						0 + inc, 1 + inc, 2 + inc,
+						2 + inc, 3 + inc, 0 + inc,
+
+						4 + inc, 5 + inc, 6 + inc,
+						4 + inc, 6 + inc, 7 + inc,
+
+						8 + inc, 9 + inc, 10 + inc,
+						8 + inc, 10 + inc, 11 + inc,
+
+						12 + inc, 13 + inc, 14 + inc,
+						12 + inc, 14 + inc, 15 + inc,
+
+						16 + inc, 17 + inc, 18 + inc,
+						16 + inc, 18 + inc, 19 + inc,
+
+						20 + inc, 21 + inc, 22 + inc,
+						20 + inc, 22 + inc, 23 + inc
+					};
+					
+					_indices.insert(_indices.end(), indicesCube.begin(), indicesCube.end());
+					indicesCube.clear();
+
+				}
+			}
+		}
+		/*std::cout << _indices << std::endl;*/
+
+		/*std::vector<uint32_t> _indices = {
 			0, 1, 2,
 			2, 3, 0,
 
@@ -272,7 +368,9 @@ public:
 
 			20, 21, 22,
 			20, 22, 23
-		};
+		};*/
+
+		
 
 		vertices.clear(); indices.clear();
 		vertices = _vertices;

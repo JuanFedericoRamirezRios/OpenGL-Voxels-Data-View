@@ -30,7 +30,7 @@ TEXT_RENDER* label;
 int Xs, Ys, Zs;
 float dist, size; // dist: distance between voxels.
 vec4 col; // Color of voxels.
-GAME_OBJECT* voxels[100][100][200];
+GAME_OBJECT* voxels;
 
 GAME_OBJECT* blueBox;
 GAME_OBJECT* textureSph;
@@ -122,7 +122,7 @@ void InitGame() {
 	
 	size = 0.05f;
 	dist = 0.1f;
-	Xs = 2, Ys = 2, Zs = 2;
+	Xs = 100, Ys = 100, Zs = 200;
 	col = { 1.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 
 	// ******** Set camera *********
@@ -149,7 +149,7 @@ void InitGame() {
 
 void Script(btDynamicsWorld* dynamicsWorld, btScalar dt) { // Custom update of dynamicsWorld (additional to physics).
 	
-	camera->SetPosition(TranslateAroundY(20.0f, 1.0f, (float)(Zs)*dist/2.0f, camera->GetPosition(), dt));
+	camera->SetPosition(TranslateAroundY(20.0f, 50.0f, (float)(Zs)*dist/2.0f, camera->GetPosition(), dt));
 
 	//if (!gameOver) {
 	//	btVector3 velocity(-15.0f, 0, 0);
@@ -226,18 +226,20 @@ void AddGameObjects() {
 
 	// ********* Voxels (no rigidBody -> no physics) ******
 	
-	
-	
-	for (int x=0; x < Xs; x++) {
-		for (int y = 0; y < Ys; y++) {
-			for (int z = 0; z < Zs; z++) {
-				voxels[x][y][z] = new GAME_OBJECT("", vec3((float)(x)*dist, (float)(z)*dist, (float)(y)*dist)/*, vec3(size, size, size)*/);
-				voxels[x][y][z]->SetVertex(MESH_TYPE::Voxels, col, size);
-				voxels[x][y][z]->SetDefaultColor(flatShaderProgram);
-				//voxels[x][y][z]->SetColor(flatShaderProgram, vec4(0.0f, 0.0f, 1.0f, 1.0f));
-			}
-		}
-	}
+	voxels = new GAME_OBJECT("");
+	voxels->SetVertex(MESH_TYPE::Voxels, col, size, dist, Xs, Ys, Zs);
+	voxels->SetDefaultColor(flatShaderProgram);
+
+	//for (int x=0; x < Xs; x++) {
+	//	for (int y = 0; y < Ys; y++) {
+	//		for (int z = 0; z < Zs; z++) {
+	//			voxels[x][y][z] = new GAME_OBJECT("", vec3((float)(x)*dist, (float)(z)*dist, (float)(y)*dist)/*, vec3(size, size, size)*/);
+	//			voxels[x][y][z]->SetVertex(MESH_TYPE::Voxels, col, size);
+	//			voxels[x][y][z]->SetDefaultColor(flatShaderProgram);
+	//			//voxels[x][y][z]->SetColor(flatShaderProgram, vec4(0.0f, 0.0f, 1.0f, 1.0f));
+	//		}
+	//	}
+	//}
 	
 
 	// ********* Decoration objetcs (no rigidBody -> no physics) ******
@@ -265,13 +267,15 @@ void RenderScene(GLclampf red = 0.0, GLclampf green = 0.0, GLclampf blue = 0.0, 
 	enemy->Draw(camera);*/
 	label->Draw();
 
-	for (int x = 0; x < Xs; x++) {
+	voxels->Draw(camera);
+	
+	/*for (int x = 0; x < Xs; x++) {
 		for (int y = 0; y < Ys; y++) {
 			for (int z = 0; z < Zs; z++) {
 				voxels[x][y][z]->Draw(camera);
 			}
 		}
-	}
+	}*/
 
 
 	blueBox->Draw(camera);

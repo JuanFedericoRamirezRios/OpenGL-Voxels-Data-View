@@ -77,7 +77,7 @@ int main(int argc, char** argv) {
 		
 		// Render the scene
 		glfwSwapBuffers(window); // Update frames in the buffer by OpenGL. 
-		RenderScene(1.0, 1.0, 0.0, 1.0); // Background: Yellow
+		RenderScene(0.0, 0.0, 0.0, 1.0); // Background: Yellow
 		glfwPollEvents(); // Check for any events. Ex. close window.
 
 		t0 = t;		
@@ -120,8 +120,9 @@ void InitGame() {
 	
 	// ******** Set Values Voxes *********
 	
-	size = 0.05f;
+	size = 0.1f;
 	dist = 0.1f;
+	//Xs = 10, Ys = 10, Zs = 20;
 	Xs = 100, Ys = 100, Zs = 200;
 	col = { 1.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 
@@ -243,7 +244,7 @@ void AddGameObjects() {
 	
 
 	// ********* Decoration objetcs (no rigidBody -> no physics) ******
-	blueBox = new GAME_OBJECT("", vec3(-2.0f, 7.0f, 0.0f), vec3(1.0f));
+	/*blueBox = new GAME_OBJECT("", vec3(-2.0f, 7.0f, 0.0f), vec3(1.0f));
 	blueBox->SetVertex(MESH_TYPE::Cube);
 	blueBox->SetColor(flatShaderProgram, vec4(0.0f, 0.0f, 1.0f, 1.0f));
 
@@ -253,7 +254,7 @@ void AddGameObjects() {
 
 	textureLitSph = new GAME_OBJECT("", vec3(9.0f, 1.0f, 0), vec3(2.0f));
 	textureLitSph->SetVertex(MESH_TYPE::UVsphere);
-	textureLitSph->SetTextureLit(litTextureShaderProgram, groundTexture, pointLight, 0.1f, 0.5f);
+	textureLitSph->SetTextureLit(litTextureShaderProgram, groundTexture, pointLight, 0.1f, 0.5f);*/
 
 }
 void RenderScene(GLclampf red = 0.0, GLclampf green = 0.0, GLclampf blue = 0.0, GLclampf alpha = 1.0) { // Clampled 32 bits float, clamped to the range [0, 1]
@@ -278,7 +279,7 @@ void RenderScene(GLclampf red = 0.0, GLclampf green = 0.0, GLclampf blue = 0.0, 
 	}*/
 
 
-	blueBox->Draw(camera);
+	/*blueBox->Draw(camera);
 	textureSph->Draw(camera);
-	textureLitSph->Draw(camera);
+	textureLitSph->Draw(camera);*/
 }

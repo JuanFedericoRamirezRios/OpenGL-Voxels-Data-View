@@ -234,6 +234,8 @@ public:
 
 		float s = size / 2;
 		float d = distance;
+		float Dx = Xs*d/2.0f;
+		float Dy = Ys*d/2.0f;
 
 		std::vector<VERTEX> _vertices;
 
@@ -245,35 +247,35 @@ public:
 					std::vector<VERTEX> cube = {
 
 						//front
-						{ { -s + d * x, -s + d * z, s + d * y}, norm, col, coorT }, //0
-						{ { -s + d * x, s + d * z, s + d * y}, norm, col, coorT }, //1
-						{ { s + d * x, s + d * z, s + d * y}, norm, col, coorT }, //2
-						{ { s + d * x, -s + d * z, s + d * y}, norm, col, coorT }, //3
+						{ { -s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT }, //0
+						{ { -s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT }, //1
+						{ { s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT }, //2
+						{ { s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT }, //3
 						// back 
-						{ { s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //4
-						{ { s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //5
-						{ { -s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //6
-						{ { -s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //7
+						{ { s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //4
+						{ { s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //5
+						{ { -s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //6
+						{ { -s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //7
 						//left
-						{ { -s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //8
-						{ { -s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //9
-						{ { -s + d * x, s + d * z, s + d * y}, norm, col, coorT },   //10
-						{ { -s + d * x, -s + d * z, s + d * y}, norm, col, coorT }, //11
+						{ { -s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //8
+						{ { -s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //9
+						{ { -s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT },   //10
+						{ { -s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT }, //11
 						//right
-						{ { s + d * x, -s + d * z, s + d * y}, norm, col, coorT }, // 12
-						{ { s + d * x, s + d * z, s + d * y}, norm, col, coorT }, //13
-						{ { s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //14
-						{ { s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //15
+						{ { s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT }, // 12
+						{ { s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT }, //13
+						{ { s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //14
+						{ { s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //15
 						//top
-						{ { -s + d * x, s + d * z, s + d * y}, norm, col, coorT }, //16
-						{ { -s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //17
-						{ { s + d * x, s + d * z, -s + d * y}, norm, col, coorT }, //18
-						{ { s + d * x, s + d * z, s + d * y}, norm, col, coorT }, //19
+						{ { -s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT }, //16
+						{ { -s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //17
+						{ { s + d * x - Dx, s + d * z, -s + d * y - Dy}, norm, col, coorT }, //18
+						{ { s + d * x - Dx, s + d * z, s + d * y - Dy}, norm, col, coorT }, //19
 						//bottom 
-						{ { -s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //20
-						{ { -s + d * x, -s + d * z, s + d * y}, norm, col, coorT }, //21
-						{ { s + d * x, -s + d * z, s + d * y}, norm, col, coorT },  //22
-						{ { s + d * x, -s + d * z, -s + d * y}, norm, col, coorT }, //23
+						{ { -s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //20
+						{ { -s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT }, //21
+						{ { s + d * x - Dx, -s + d * z, s + d * y - Dy}, norm, col, coorT },  //22
+						{ { s + d * x - Dx, -s + d * z, -s + d * y - Dy}, norm, col, coorT }, //23
 					};
 					_vertices.insert(_vertices.end(), cube.begin(), cube.end());
 					cube.clear();

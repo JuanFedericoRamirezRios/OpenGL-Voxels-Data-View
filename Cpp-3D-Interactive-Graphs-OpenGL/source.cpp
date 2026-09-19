@@ -29,6 +29,7 @@ TEXT_RENDER* label;
 
 int Xs, Ys, Zs;
 float dist, size; // dist: distance between voxels.
+float radiusCam;
 vec4 col; // Color of voxels.
 GAME_OBJECT* voxels;
 
@@ -124,11 +125,13 @@ void InitGame() {
 	dist = 0.1f;
 	//Xs = 10, Ys = 10, Zs = 20;
 	Xs = 100, Ys = 100, Zs = 200;
+	radiusCam = 25.0f;
 	col = { 1.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 
 	// ******** Set camera *********
-	camera = new CAMERA(45.0f, 800, 600, 0.1f, 100.0f, vec3((float)(Xs)*dist / 2.0f, (float)(Zs)*dist / 2.0f, 30.0f)); // 800x600: size of window
-	camera->SetCameras(vec3((float)(Xs)*dist / 2.0f, (float)(Zs)*dist / 2.0f, (float)(Ys)*dist / 2.0f));
+	float initAng = 3.14f / 3.0f;
+	camera = new CAMERA(45.0f, 800, 600, 0.1f, 100.0f, vec3(radiusCam*cos(initAng), (float)(Zs)*dist / 2.0f, radiusCam * sin(initAng))); // 800x600: size of window
+	camera->SetCameras(vec3(0.0f, (float)(Zs)*dist / 2.0f, 0.0f));
 	// ******** Point Light *********
 	pointLight = new POINT_LIGHT(vec3(0.0f, 10.0f, 0.0f), vec4(1.0f, 1.0f, 1.0f, 1.0f));
 
@@ -150,7 +153,7 @@ void InitGame() {
 
 void Script(btDynamicsWorld* dynamicsWorld, btScalar dt) { // Custom update of dynamicsWorld (additional to physics).
 	
-	camera->SetPosition(TranslateAroundY(20.0f, 50.0f, (float)(Zs)*dist/2.0f, camera->GetPosition(), dt));
+	camera->SetPosition(TranslateAroundY(20.0f, radiusCam, (float)(Zs)*dist/2.0f, camera->GetPosition(), dt));
 
 	//if (!gameOver) {
 	//	btVector3 velocity(-15.0f, 0, 0);

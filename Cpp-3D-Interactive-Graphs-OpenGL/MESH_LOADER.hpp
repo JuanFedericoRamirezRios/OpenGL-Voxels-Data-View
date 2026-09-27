@@ -237,13 +237,19 @@ public:
 		float Dx = Xs*d/2.0f;
 		float Dy = Ys*d/2.0f;
 
+		int stateRnd;
+
 		std::vector<VERTEX> _vertices;
 
 		for (int x = 0; x < Xs; x++) {
 			for (int y = 0; y < Ys; y++) {
 				for (int z = 0; z < Zs; z++) {
-					if (rand() % 2) col = { 0.0f, 1.0f, 0.0f, 0.0f }; // Color of voxels
-					else col = { 0.0f, 0.0f, 1.0f, 0.0f }; // Color of voxels
+
+					stateRnd = rand() % 3; // 0, 1 or 2
+					if (stateRnd == 0) col = { 0.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
+					else if(stateRnd == 1) col = { 0.0f, 1.0f, 0.0f, 1.0f };
+					else col = { 0.0f, 0.0f, 1.0f, 1.0f }; // Color of voxels
+
 					std::vector<VERTEX> cube = {
 
 						//front

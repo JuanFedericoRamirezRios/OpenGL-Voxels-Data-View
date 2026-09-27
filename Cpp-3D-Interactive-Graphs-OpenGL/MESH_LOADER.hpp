@@ -246,9 +246,14 @@ public:
 				for (int z = 0; z < Zs; z++) {
 
 					stateRnd = rand() % 3; // 0, 1 or 2
+
+					
+
 					if (stateRnd == 0) col = { 0.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 					else if(stateRnd == 1) col = { 0.0f, 1.0f, 0.0f, 1.0f };
 					else col = { 0.0f, 0.0f, 1.0f, 1.0f }; // Color of voxels
+
+					if (x > (Xs / 2) && z >(Zs / 2) && y > (Ys / 2)) col = { 0.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 
 					std::vector<VERTEX> cube = {
 
@@ -288,43 +293,6 @@ public:
 				}
 			}
 		}
-
-		
-		//std::vector<VERTEX> cube = {
-
-		//	//front
-		//	{ { -s, -s, s }, norm, color, coorT }, //0
-		//	{ { -s, s, s }, norm, color, coorT }, //1
-		//	{ { s, s, s }, norm, color, coorT }, //2
-		//	{ { s, -s, s }, norm, color, coorT }, //3
-		//	// back 
-		//	{ { s, -s, -s }, norm, color, coorT }, //4
-		//	{ { s, s, -s }, norm, color, coorT }, //5
-		//	{ { -s, s, -s }, norm, color, coorT }, //6
-		//	{ { -s, -s, -s }, norm, color, coorT }, //7
-		//	//left
-		//	{ { -s, -s, -s }, norm, color, coorT }, //8
-		//	{ { -s, s, -s }, norm, color, coorT }, //9
-		//	{ { -s, s, s }, norm, color, coorT },   //10
-		//	{ { -s, -s, s }, norm, color, coorT }, //11
-		//	//right
-		//	{ { s, -s, s }, norm, color, coorT }, // 12
-		//	{ { s, s, s }, norm, color, coorT }, //13
-		//	{ { s, s, -s }, norm, color, coorT }, //14
-		//	{ { s, -s, -s }, norm, color, coorT }, //15
-		//	//top
-		//	{ { -s, s, s }, norm, color, coorT }, //16
-		//	{ { -s, s, -s }, norm, color, coorT }, //17
-		//	{ { s, s, -s }, norm, color, coorT }, //18
-		//	{ { s, s, s }, norm, color, coorT }, //19
-		//	//bottom 
-		//	{ { -s, -s, -s }, norm, color, coorT }, //20
-		//	{ { -s, -s, s }, norm, color, coorT }, //21
-		//	{ { s, -s, s }, norm, color, coorT },  //22
-		//	{ { s, -s, -s }, norm, color, coorT }, //23
-		//};
-		//_vertices.insert(_vertices.end(), cube.begin(), cube.end());
-		//cube.clear();
 
 		std::vector<uint32_t> _indices;
 

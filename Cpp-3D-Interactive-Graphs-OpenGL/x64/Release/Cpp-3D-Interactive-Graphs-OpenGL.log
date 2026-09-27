@@ -26,13 +26,22 @@ D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-G
 D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(246,23): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'source.cpp')
   
-D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(331,21): warning C4018: '<': signed/unsigned mismatch
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(256,12): warning C4018: '>': signed/unsigned mismatch
   (compiling source file 'source.cpp')
   
-D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(332,22): warning C4018: '<': signed/unsigned mismatch
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(256,28): warning C4018: '>': signed/unsigned mismatch
   (compiling source file 'source.cpp')
   
-D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(333,23): warning C4018: '<': signed/unsigned mismatch
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(256,43): warning C4018: '>': signed/unsigned mismatch
+  (compiling source file 'source.cpp')
+  
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(336,21): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'source.cpp')
+  
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(337,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'source.cpp')
+  
+D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\MESH_LOADER.hpp(338,23): warning C4018: '<': signed/unsigned mismatch
   (compiling source file 'source.cpp')
   
 D:\pCloud\pCloud\GitHubRepositories\OpenGL-Voxels-Data-View\Cpp-3D-Interactive-Graphs-OpenGL\TEXT_RENDER.hpp(19,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline

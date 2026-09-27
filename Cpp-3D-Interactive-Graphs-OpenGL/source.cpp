@@ -30,7 +30,6 @@ TEXT_RENDER* label;
 int Xs, Ys, Zs;
 float dist, size; // dist: distance between voxels.
 float radiusCam;
-vec4 col; // Color of voxels.
 GAME_OBJECT* voxels;
 
 GAME_OBJECT* blueBox;
@@ -126,7 +125,6 @@ void InitGame() {
 	//Xs = 10, Ys = 10, Zs = 20;
 	Xs = 100, Ys = 100, Zs = 200;
 	radiusCam = 25.0f;
-	col = { 1.0f, 0.0f, 0.0f, 0.0f }; // Color of voxels
 
 	// ******** Set camera *********
 	float initAng = 3.14f / 3.0f;
@@ -231,7 +229,7 @@ void AddGameObjects() {
 	// ********* Voxels (no rigidBody -> no physics) ******
 	
 	voxels = new GAME_OBJECT("");
-	voxels->SetVertex(MESH_TYPE::Voxels, col, size, dist, Xs, Ys, Zs);
+	voxels->SetVertex(MESH_TYPE::Voxels, size, dist, Xs, Ys, Zs);
 	voxels->SetDefaultColor(flatShaderProgram);
 
 	//for (int x=0; x < Xs; x++) {

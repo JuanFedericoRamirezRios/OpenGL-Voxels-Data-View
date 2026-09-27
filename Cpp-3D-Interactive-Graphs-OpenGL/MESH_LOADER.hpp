@@ -213,7 +213,7 @@ public:
 		indices = _indices;
 	}
 
-	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, vec4 color, float size, float distance, unsigned Xs, unsigned Ys, unsigned Zs) {
+	static void LoadVoxelsVertices(std::vector<VERTEX>& vertices, std::vector<uint32_t>& indices, float size, float distance, unsigned Xs, unsigned Ys, unsigned Zs) {
 
 		//for (int x = 0; x < Xs; x++) {
 		//	for (int y = 0; y < Ys; y++) {

@@ -168,7 +168,7 @@ public:
 	}
 
 
-	void SetVertex(MESH_TYPE meshType, vec4 color = { 0.0f, 0.0f, 0.0f, 1.0f }, float size = 1.0f, float distance = 1.0f, unsigned Xs = 1, unsigned Ys = 1, unsigned Zs = 1) {
+	void SetVertex(MESH_TYPE meshType, float voxelSize = 1.0f, float VoxelDistance = 1.0f, unsigned voxelXs = 1, unsigned voxelYs = 1, unsigned voxelZs = 1) {
 		// ******* Load Vertex data **********
 		switch (meshType) {
 		case Triangle:
@@ -184,7 +184,7 @@ public:
 			MESH_LOADER::LoadUVSphereVertices(vertices, indices);
 			break;
 		case Voxels:
-			MESH_LOADER::LoadVoxelsVertices(vertices, indices, color, size, distance, Xs, Ys, Zs);
+			MESH_LOADER::LoadVoxelsVertices(vertices, indices, voxelSize, VoxelDistance, voxelXs, voxelYs, voxelZs);
 			break;
 		}
 	}
